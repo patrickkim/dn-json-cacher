@@ -5,7 +5,8 @@ class MemFetcher
     @cache = REDIS.get(url)
 
     if @cache
-      return @cache["response"] if Time.now - @cache["time_stamp"] < max_age
+      cache_response = JSON.parse @cache
+      return cache_response["response"] if Time.now - cache_response["time_stamp"] < max_age
     end
 
     cache = {
@@ -17,9 +18,7 @@ class MemFetcher
     REDIS.set url, cache.to_json
 
     binding.pry
-    @cache ||= REDIS.get(url)
-
-    return @cache["response"]
+    return cache["response"]
   end
 
 end
