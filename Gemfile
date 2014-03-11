@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
 gem "sinatra"
-gem "cache"
 gem "json"
+gem "redis"
+gem "pry"
