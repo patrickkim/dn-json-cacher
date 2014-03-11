@@ -1,6 +1,6 @@
 require "sinatra"
 require "json"
-require "mem_fetcher"
+require "./mem_fetcher"
 
 get "/" do
   content_type:json
