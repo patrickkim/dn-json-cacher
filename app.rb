@@ -26,7 +26,7 @@ get "/r" do
 end
 
 get "/n" do
-  @api_response = "https://news.layervault.com/new?format=json", MAX_AGE
+  @api_response = REDIS_CACHER.fetch "https://news.layervault.com/new?format=json", MAX_AGE
 
   content_type:json
   @api_response
